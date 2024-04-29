@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Gabriele Ventura    3H    30/04/2024
+ * Gestione eventi del file xaml
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

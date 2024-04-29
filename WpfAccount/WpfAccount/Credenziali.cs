@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * Gabriele Ventura    3H    30/04/2024
+ * Classe per la gestione di account all'interno di un database, collegato al file xaml
+ */
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
