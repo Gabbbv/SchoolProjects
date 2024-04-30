@@ -51,7 +51,7 @@ namespace WpfAccount
         /// <param name="username">Username</param>
         /// <param name="password">Password</param>
         /// <returns>Restituisce true se autenticato, altrimenti false (+ messaggio)</returns>
-        public (string messaggio, bool esito) AutenticaUtente(string username, string password)
+        public (string, bool) AutenticaUtente(string username, string password)
         {
             if (accounts.ContainsKey(username))
                 if (accounts[username].password == Encrypt(password))
@@ -69,7 +69,7 @@ namespace WpfAccount
         /// <param name="password1">Password</param>
         /// <param name="password2">Password ripetuta</param>
         /// <returns>Restituisce true se registra il nuovo utente, altrimenti false (+ messaggio)</returns>
-        public (string messaggio, bool esito) RegistraAccount(string nome, string cognome, string username, string password1, string password2)
+        public (string, bool) RegistraAccount(string username, string nome, string cognome, string password1, string password2)
         {
             if (password1 != password2)
                 return ("Le password non combaciano", false);
@@ -103,7 +103,7 @@ namespace WpfAccount
         /// <param name="username">Username</param>
         /// <param name="password">Password</param>
         /// <returns>Restituisce true se elimina l'account, altrimenti false (+ messaggio)</returns>
-        public (string messaggio, bool esito) EliminaAccount(string username, string password)
+        public (string, bool) EliminaAccount(string username, string password)
         {
             if (accounts.ContainsKey(username))
                 if (accounts[username].password == Encrypt(password))

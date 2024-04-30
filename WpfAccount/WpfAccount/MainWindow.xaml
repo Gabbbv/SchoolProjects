@@ -11,9 +11,28 @@
         <TextBox x:Name="txt_username_login" HorizontalAlignment="Left" Margin="150,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="20" Height="30"/>
         <PasswordBox x:Name="txt_password_login" HorizontalAlignment="Left" Margin="150,100,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="20"/>
         <Label x:Name="lbl_username_login" Content="Username:" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
-        <Label x:Name="lbl_username_login_Copy" Content="Password:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
-        <Button x:Name="btn_login" Content="LOGIN" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="40" Width="150" FontSize="20"/>
+        <Label x:Name="lbl_password_login" Content="Password:" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
+        <Button x:Name="btn_login" Content="LOGIN" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Height="40" Width="150" FontSize="20" Click="btn_login_Click"/>
         <Label x:Name="lbl_errore_login" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="300" FontSize="15"/>
-
+        <Label x:Name="lbl_elimina_account" Content="ELIMINA ACCOUNT" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
+        <TextBox x:Name="txt_username_elimina_account" HorizontalAlignment="Left" Margin="150,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="20" Height="30"/>
+        <PasswordBox x:Name="txt_password_elimina_account" HorizontalAlignment="Left" Margin="150,300,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="20"/>
+        <Label x:Name="lbl_username_elimina_account" Content="Username:" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
+        <Label x:Name="lbl_password_elimina_account" Content="Password:" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
+        <Button x:Name="btn_elimina_account" Content="ELIMINA" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" Height="40" Width="150" FontSize="20" Click="btn_elimina_account_Click"/>
+        <Label x:Name="lbl_errore_elimina_account" HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="300" FontSize="15"/>
+        <Label x:Name="lbl_registra_account" Content="REGISTRA ACCOUNT" HorizontalAlignment="Left" Margin="410,10,0,0" VerticalAlignment="Top" FontSize="30" FontWeight="Bold"/>
+        <TextBox x:Name="txt_username_registra_account" HorizontalAlignment="Left" Margin="580,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="20" Height="30"/>
+        <Label x:Name="lbl_username_registra_account" Content="Username:" HorizontalAlignment="Left" Margin="410,60,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
+        <TextBox x:Name="txt_nome_registra_account" HorizontalAlignment="Left" Margin="580,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="20" Height="30"/>
+        <Label x:Name="lbl_nome_registra_account" Content="Nome:" HorizontalAlignment="Left" Margin="410,100,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
+        <TextBox x:Name="txt_cognome_registra_account" HorizontalAlignment="Left" Margin="580,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="20" Height="30"/>
+        <Label x:Name="lbl_cognome_registra_account" Content="Cognome:" HorizontalAlignment="Left" Margin="410,140,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
+        <PasswordBox x:Name="txt_password_registra_account" HorizontalAlignment="Left" Margin="580,180,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="20"/>
+        <Label x:Name="lbl_password_registra_account" Content="Password:" HorizontalAlignment="Left" Margin="410,180,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
+        <PasswordBox x:Name="txt_ripeti_password_registra_account" HorizontalAlignment="Left" Margin="580,220,0,0" VerticalAlignment="Top" Width="150" Height="30" FontSize="20"/>
+        <Label x:Name="lbl_ripeti_password_registra_account" Content="Ripeti password:" HorizontalAlignment="Left" Margin="410,220,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="20"/>
+        <Label x:Name="lbl_errore_registra_account" HorizontalAlignment="Left" Margin="410,260,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="300" FontSize="15"/>
+        <Button x:Name="btn_registra_account" Content="REGISTRATI" HorizontalAlignment="Left" Margin="410,290,0,0" VerticalAlignment="Top" Height="40" Width="150" FontSize="20" Click="btn_registra_account_Click"/>
     </Grid>
 </Window>
