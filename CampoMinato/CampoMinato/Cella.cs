@@ -10,12 +10,14 @@ namespace CampoMinato
 {
     internal class Cella
     {
-        private bool _mina;
+        private bool _mina = false;
         private bool _scoperta = false;
+        private bool _bandiera = false;
         private int _numero;
 
         public bool Mina { get => _mina; }
         public bool Scoperta { get => _scoperta; }
+        public bool Bandiera { get => _bandiera; }
         public int Numero { get => _numero; set => _numero = value; }
         
         public void MettiMina()
@@ -32,6 +34,11 @@ namespace CampoMinato
             {
                 _scoperta = true;
             }
+        }
+
+        public void TogliMettiBandiera()
+        {
+            _bandiera = !_bandiera;
         }
     }
 }

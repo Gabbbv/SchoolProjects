@@ -10,30 +10,43 @@ namespace CampoMinato
     internal class Gioco
     {
         private Random rnd = new Random();
-        private Cella[,] _tabella = new Cella[10, 10];
+
+        private Cella[,] _tabella = new Cella[14, 18];
+        private int mine = 40;
 
         public Cella[,] Tabella { get => _tabella; }
 
         public Gioco()
         {
+            GeneraTabella();
+        }
+
+        public void GeneraTabella()
+        {
             int mineMesse = 0;
-            for (int i = 0; i < 10; i++)
+
+            for (int i = 0; i < _tabella.GetLength(0); i++)
             {
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j < _tabella.GetLength(1); j++)
                 {
-                    bool mina = rnd.Next(0, 100) < 10;
                     _tabella[i, j] = new Cella();
-                    if (mina && mineMesse < 10)
-                    {
-                        _tabella[i, j].MettiMina();
-                        mineMesse++;
-                    }
                 }
             }
 
-            for (int i = 0; i < 10; i++)
+            while (mineMesse < mine)
             {
-                for (int j = 0; j < 10; j++)
+                int i = rnd.Next(_tabella.GetLength(0));
+                int j = rnd.Next(_tabella.GetLength(1));
+                if (!_tabella[i, j].Mina)
+                {
+                    _tabella[i, j].MettiMina();
+                    mineMesse++;
+                }
+            }
+
+            for (int i = 0; i < _tabella.GetLength(0); i++)
+            {
+                for (int j = 0; j < _tabella.GetLength(1); j++)
                 {
                     if (!_tabella[i, j].Mina)
                     {
@@ -42,7 +55,7 @@ namespace CampoMinato
                         {
                             for (int l = j - 1; l <= j + 1; l++)
                             {
-                                if (k >= 0 && k < 10 && l >= 0 && l < 10 && _tabella[k, l].Mina)
+                                if (k >= 0 && k < _tabella.GetLength(0) && l >= 0 && l < _tabella.GetLength(1) && _tabella[k, l].Mina)
                                 {
                                     mineVicine++;
                                 }
@@ -56,8 +69,13 @@ namespace CampoMinato
 
         public bool Scoppia(int i, int j)
         {
-            if (_tabella[i, j].Mina)
+            if (_tabella[i, j].Scoperta || _tabella[i, j].Bandiera)
             {
+                return false;
+            }
+            else if (_tabella[i, j].Mina)
+            {
+                GeneraTabella();
                 return true;
             }
             else
@@ -70,7 +88,7 @@ namespace CampoMinato
                     {
                         for (int l = j - 1; l <= j + 1; l++)
                         {
-                            if (k >= 0 && k < 10 && l >= 0 && l < 10 && !_tabella[k, l].Scoperta)
+                            if (k >= 0 && k < _tabella.GetLength(0) && l >= 0 && l < _tabella.GetLength(1) && !_tabella[k, l].Scoperta)
                             {
                                 Scoppia(k, l);
                             }
@@ -79,6 +97,27 @@ namespace CampoMinato
                 }
                 return false;
             }
+        }
+
+        public bool Vittoria()
+        {
+            int celleScoperte = 0;
+            for (int i = 0; i < _tabella.GetLength(0); i++)
+            {
+                for (int j = 0; j < _tabella.GetLength(1); j++)
+                {
+                    if (_tabella[i, j].Scoperta)
+                    {
+                        celleScoperte++;
+                    }
+                }
+            }
+            bool vittoria = celleScoperte == Tabella.Length - mine;
+            if (vittoria)
+            {
+                GeneraTabella();
+            }
+            return vittoria;
         }
     }
 }
