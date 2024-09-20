@@ -14,8 +14,10 @@ namespace CampoMinato
         public MainWindow()
         {
             InitializeComponent();
-            Container.Height = gioco.Tabella.GetLength(0) * 30 - 5;
-            Container.Width = gioco.Tabella.GetLength(1) * 30 - 5;
+            Griglia.Height = gioco.Tabella.GetLength(0) * 30 - 5;
+            Griglia.Width = gioco.Tabella.GetLength(1) * 30 - 5;
+            Container.Height = Griglia.Height + 100;
+            Container.Width = Griglia.Width + 200;
             Refresh();
         }
 

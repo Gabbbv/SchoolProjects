@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CampoMinato"
         mc:Ignorable="d"
-        Title="Campo minato" Height="800" Width="800" WindowStyle="None" ResizeMode="NoResize">
+        Title="Campo minato" ResizeMode="NoResize" Width="1000" Height="1000" WindowStartupLocation="CenterScreen">
     <Grid x:Name="Griglia"/>
 </Window>
