@@ -9,13 +9,14 @@ namespace CampoMinato
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Gioco gioco = new Gioco();
+        private Gioco _gioco = new Gioco();
+        private bool _primoClick = true;
 
         public MainWindow()
         {
             InitializeComponent();
-            Griglia.Height = gioco.Tabella.GetLength(0) * 30 - 5;
-            Griglia.Width = gioco.Tabella.GetLength(1) * 30 - 5;
+            Griglia.Height = _gioco.Tabella.GetLength(0) * 30 - 5;
+            Griglia.Width = _gioco.Tabella.GetLength(1) * 30 - 5;
             Container.Height = Griglia.Height + 100;
             Container.Width = Griglia.Width + 200;
             Refresh();
@@ -25,9 +26,9 @@ namespace CampoMinato
         {
             this.Griglia.Children.Clear();
 
-            for (int i = 0; i < gioco.Tabella.GetLength(0); i++)
+            for (int i = 0; i < _gioco.Tabella.GetLength(0); i++)
             {
-                for (int j = 0; j < gioco.Tabella.GetLength(1); j++)
+                for (int j = 0; j < _gioco.Tabella.GetLength(1); j++)
                 {
                     // Creo un bottone per ogni cella
                     Button b = new Button();
@@ -37,19 +38,19 @@ namespace CampoMinato
                     b.Width = 25;
                     b.Height = 25;
                     b.Margin = new Thickness(5);
-                    if (gioco.Tabella[i, j].Scoperta && !gioco.Tabella[i, j].Mina && gioco.Tabella[i, j].Numero != 0)
+                    if (_gioco.Tabella[i, j].Scoperta && !_gioco.Tabella[i, j].Mina && _gioco.Tabella[i, j].Numero != 0)
                     {
-                        b.Content = gioco.Tabella[i, j].Numero;
+                        b.Content = _gioco.Tabella[i, j].Numero;
                     }
                     else 
                     { 
                         b.Content = ""; 
                     }
-                    if (gioco.Tabella[i, j].Scoperta)
+                    if (_gioco.Tabella[i, j].Scoperta)
                     {
                         b.Background = Brushes.White;
                     }
-                    else if (gioco.Tabella[i, j].Bandiera)
+                    else if (_gioco.Tabella[i, j].Bandiera)
                     {
                         b.Background = Brushes.Red;
                     }
@@ -69,14 +70,21 @@ namespace CampoMinato
         {
             Button b = (Button)sender;
             int[] pos = (int[])b.Tag;
-            if (gioco.Scoppia(pos[0], pos[1]))
+            if (_primoClick)
+            {
+                _gioco.GeneraTabella(pos[0], pos[1]);
+                _primoClick = false;
+            }
+            if (_gioco.Scoppia(pos[0], pos[1]))
             {
                 MessageBox.Show("Hai perso!");
+                _primoClick = true;
             }
             Refresh();
-            if (gioco.Vittoria())
+            if (_gioco.Vittoria())
             {
                 MessageBox.Show("Hai vinto!");
+                _primoClick = true;
                 Refresh();
             }
         }
@@ -85,7 +93,7 @@ namespace CampoMinato
         {
             Button b = (Button)sender;
             int[] pos = (int[])b.Tag;
-            gioco.Tabella[pos[0], pos[1]].TogliMettiBandiera();
+            _gioco.Tabella[pos[0], pos[1]].TogliMettiBandiera();
             Refresh();
         }
     }

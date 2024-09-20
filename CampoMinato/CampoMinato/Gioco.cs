@@ -18,13 +18,11 @@ namespace CampoMinato
 
         public Gioco()
         {
-            GeneraTabella();
+            InizializzaTabella();
         }
 
-        public void GeneraTabella()
+        public void InizializzaTabella()
         {
-            int mineMesse = 0;
-
             for (int i = 0; i < _tabella.GetLength(0); i++)
             {
                 for (int j = 0; j < _tabella.GetLength(1); j++)
@@ -32,12 +30,19 @@ namespace CampoMinato
                     _tabella[i, j] = new Cella();
                 }
             }
+        }
+
+        public void GeneraTabella(int n_i, int n_j)
+        {
+            int mineMesse = 0;
+
+            InizializzaTabella();
 
             while (mineMesse < mine)
             {
                 int i = rnd.Next(_tabella.GetLength(0));
                 int j = rnd.Next(_tabella.GetLength(1));
-                if (!_tabella[i, j].Mina)
+                if (!_tabella[i, j].Mina && !(i >= n_i - 1 && i <= n_i + 1 && j >= n_j - 1 && j <= n_j + 1))
                 {
                     _tabella[i, j].MettiMina();
                     mineMesse++;
@@ -75,7 +80,7 @@ namespace CampoMinato
             }
             else if (_tabella[i, j].Mina)
             {
-                GeneraTabella();
+                InizializzaTabella();
                 return true;
             }
             else
@@ -115,7 +120,7 @@ namespace CampoMinato
             bool vittoria = celleScoperte == Tabella.Length - mine;
             if (vittoria)
             {
-                GeneraTabella();
+                InizializzaTabella();
             }
             return vittoria;
         }
